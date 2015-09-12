@@ -1,0 +1,67 @@
+﻿Build started 9/10/2015 8:40:27 PM.
+     1>Project "F:\Github\DemoDirectX\DemoDirectX\DemoDirectX.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D _UNICODE /D ZLIB_WINAPI /D _CRT_SECURE_NO_WARNINGS /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gz /TP /analyze- /errorReport:prompt GameLog.cpp GameMap.cpp
+         GameLog.cpp
+         GameMap.cpp
+     1>GameMap.cpp(20): warning C4018: '<' : signed/unsigned mismatch
+     1>GameMap.cpp(98): warning C4018: '<' : signed/unsigned mismatch
+     1>GameMap.cpp(105): warning C4018: '<' : signed/unsigned mismatch
+     1>GameMap.cpp(117): warning C4018: '<' : signed/unsigned mismatch
+     1>GameMap.cpp(119): warning C4018: '<' : signed/unsigned mismatch
+     1>GameMap.cpp(137): warning C4244: 'argument' : conversion from 'size_t' to 'FLOAT', possible loss of data
+     1>GameMap.cpp(142): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>GameMap.cpp(143): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Github\DemoDirectX\Release\DemoDirectX.exe" /INCREMENTAL:NO /NOLOGO d3dx9.lib d3d9.lib dxguid.lib dinput8.lib zlib.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"F:\Github\DemoDirectX\Release\DemoDirectX.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Github\DemoDirectX\Release\DemoDirectX.lib" /MACHINE:X86 /SAFESEH Release\Animation.obj
+         Release\Brick.obj
+         Release\BrickGold.obj
+         Release\Camera.obj
+         Release\Enemy.obj
+         Release\EnemyMushRoom.obj
+         Release\Game.obj
+         Release\GameCollision.obj
+         Release\GameConverter.obj
+         Release\GameDebugDraw.obj
+         Release\GameGlobal.obj
+         Release\GameInput.obj
+         Release\GameLog.obj
+         Release\GameMap.obj
+         Release\GameScene.obj
+         Release\GameTime.obj
+         Release\main.obj
+         Release\base64.obj
+         Release\miniz.obj
+         Release\tinyxml2.obj
+         Release\TmxEllipse.obj
+         Release\TmxImage.obj
+         Release\TmxImageLayer.obj
+         Release\TmxLayer.obj
+         Release\TmxMap.obj
+         Release\TmxObject.obj
+         Release\TmxObjectGroup.obj
+         Release\TmxPolygon.obj
+         Release\TmxPolyline.obj
+         Release\TmxPropertySet.obj
+         Release\TmxTerrain.obj
+         Release\TmxTerrainArray.obj
+         Release\TmxTile.obj
+         Release\TmxTileLayer.obj
+         Release\TmxTileOffset.obj
+         Release\TmxTileset.obj
+         Release\TmxUtil.obj
+         Release\Mario.obj
+         Release\PhysicWorld.obj
+         Release\QuadTree.obj
+         Release\Scene.obj
+         Release\SceneGamePlay.obj
+         Release\SceneManager.obj
+         Release\Sprite.obj
+         Generating code
+         Finished generating code
+         DemoDirectX.vcxproj -> F:\Github\DemoDirectX\Release\DemoDirectX.exe
+     1>Done Building Project "F:\Github\DemoDirectX\DemoDirectX\DemoDirectX.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.55
