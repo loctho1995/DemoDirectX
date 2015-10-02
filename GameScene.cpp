@@ -20,7 +20,7 @@ void GameScene::LoadContent()
     //load map
 
     mGameMap = new GameMap(GameGlobal::GetCurrentSpriteHandler(), mMapPath);
-    mCamera = new Camera(GameGlobal::GetWidth() / 2, GameGlobal::GetHeight() / 2);
+    mCamera = new Camera(GameGlobal::GetWidth(), GameGlobal::GetHeight());
     mCamera->SetPosition(mCamera->GetWidth() / 2, mGameMap->GetHeight() - mCamera->GetHeight() / 2);
     //chỉnh tọa độ camera cho vị trí góc dưới map
     //vị trí của camera tương ứng với vị trí trong thế giới thực, tuy hiên position là vị trí tâm của camera

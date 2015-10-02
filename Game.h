@@ -14,37 +14,28 @@
 #include "GameMap.h"
 #include "SceneManager.h"
 #include "Shader.h"
+#include "SceneGamePlay.h"
 
 #define KEYBOARD_BUFFERD_SIZE 1024
 
 class Game : public IInput
 {
 public:
-    Game(HINSTANCE hInstance, LPWSTR name,int cmdShow, Scene *newScene,int fps = 60, int width = 960, int height = 640);
+    Game(int fps = 60, int width = 960, int height = 640);
     ~Game();
 
 protected:
 
-    LPDIRECT3D9             mDirect3D9;
-    LPD3DXSPRITE            mSpriteHandler;
-    PDIRECT3D9              mD3d;
-    LPDIRECT3DDEVICE9       mDevice;
-    HINSTANCE               mHInstance;
-    HWND                    mHwnd;
     PDIRECT3DSURFACE9       mBackground,
                             mBackBuffer;
 
-    int                     mWidth, 
-                            mHeight, 
-                            mCmdShow;
+    int                     mWidth,
+                            mHeight;
     static int              mIsDone;
     float                   mFPS;
-    LPWSTR                  mName;
 
-    void InitWindow();
-    void InitDevice();
-    void InitInput();
     void InitLoop();
+    void InitInput();
     void Render();
     void LoadContent();  
 
@@ -53,7 +44,6 @@ protected:
     void OnKeyUp(int keyCode);
 
     LPDIRECT3DSURFACE9 createSurfaceFromFile(LPDIRECT3DDEVICE9 device, LPWSTR filePath);
-    static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 };
 
 #endif
