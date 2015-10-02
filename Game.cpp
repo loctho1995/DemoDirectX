@@ -147,12 +147,12 @@ void Game::InitLoop()
         GameInput::GetInstance()->UpdateInput();
 
         delta += GameTime::GetInstance()->GetCouter();
-        //GAMELOG("counter: %f", delta);
 
         if (delta >= tickPerFrame)
         {
             Update((delta));
-            delta = 0;
+            //GAMELOG("FPS: %f", 1.0 / delta);
+            delta = 0;           
         }
         else
         {
@@ -175,6 +175,10 @@ void Game::InitDevice()
     d3dpp.BackBufferCount = 1;
     d3dpp.BackBufferWidth = mWidth;
     d3dpp.BackBufferHeight = mHeight;
+    //d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+    //d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
+    //d3dpp.EnableAutoDepthStencil = true;
+    //d3dpp.hDeviceWindow = mHwnd;
 
     HRESULT dvresult = mD3d->CreateDevice(  D3DADAPTER_DEFAULT, 
                                             D3DDEVTYPE_HAL, 
@@ -182,7 +186,8 @@ void Game::InitDevice()
                                             D3DCREATE_SOFTWARE_VERTEXPROCESSING, 
                                             &d3dpp, 
                                             &mDevice);
-    
+    GameGlobal::SetCurrentDevice(mDevice);
+
 #if _DEBUG
         switch (dvresult)
         {
@@ -269,6 +274,8 @@ void Game::Render()
         mSpriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
         SceneManager::GetInstance()->GetCurrentScene()->Draw();
         mSpriteHandler->End();
+
+        //mShader->Render();
         mDevice->EndScene();
     }
 

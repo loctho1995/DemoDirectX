@@ -181,6 +181,9 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>FramWork\GameObjects\GameScenes</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>FramWork\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInput.h">
@@ -327,10 +330,14 @@
     <ClInclude Include="GameScene.h">
       <Filter>FramWork\GameObjects\GameScenes</Filter>
     </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>FramWork\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="MapReader\Tmx.h.in">
       <Filter>FramWork\ThirdParty\MapReader</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -5,6 +5,7 @@ HWND GameGlobal::mHwnd = NULL;
 LPD3DXSPRITE GameGlobal::mSpriteHandler = NULL;
 int GameGlobal::mWidth = 960;
 int GameGlobal::mHeight = 640;
+LPDIRECT3DDEVICE9 GameGlobal::mDevice = nullptr;
 
 GameGlobal::GameGlobal()
 {
@@ -15,6 +16,17 @@ GameGlobal::GameGlobal()
 GameGlobal::~GameGlobal()
 {
 }
+
+void GameGlobal::SetCurrentDevice(LPDIRECT3DDEVICE9 device)
+{
+    mDevice = device;
+}
+
+LPDIRECT3DDEVICE9 GameGlobal::GetCurrentDevice()
+{
+    return mDevice;
+}
+
 
 HINSTANCE GameGlobal::GetCurrentHINSTACE()
 {
@@ -45,7 +57,6 @@ LPD3DXSPRITE GameGlobal::GetCurrentSpriteHandler()
 {
     return mSpriteHandler;
 }
-
 
 void GameGlobal::SetWidth(int width)
 {

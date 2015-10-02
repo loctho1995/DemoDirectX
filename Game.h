@@ -13,6 +13,7 @@
 #include "Animation.h"
 #include "GameMap.h"
 #include "SceneManager.h"
+#include "Shader.h"
 
 #define KEYBOARD_BUFFERD_SIZE 1024
 
@@ -53,7 +54,6 @@ protected:
 
     LPDIRECT3DSURFACE9 createSurfaceFromFile(LPDIRECT3DDEVICE9 device, LPWSTR filePath);
     static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
 };
 
 #endif

@@ -21,6 +21,9 @@ public:
     static void SetCurrentSpriteHandler(LPD3DXSPRITE spriteHandler);
     static LPD3DXSPRITE GetCurrentSpriteHandler();
 
+    static void SetCurrentDevice(LPDIRECT3DDEVICE9 device);
+    static LPDIRECT3DDEVICE9 GetCurrentDevice();
+
     static void SetWidth(int width);
     static int GetWidth();
 
@@ -32,6 +35,7 @@ private:
     static HWND mHwnd;
     static LPD3DXSPRITE mSpriteHandler;
     static int mWidth, mHeight;
+    static LPDIRECT3DDEVICE9 mDevice;
 
 };
 
