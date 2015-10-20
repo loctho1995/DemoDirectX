@@ -1,2 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<DEFECTS><DEFECT><SFA><FILEPATH>f:\github\demodirectx\demodirectx\mapreader\</FILEPATH><FILENAME>tmxpolyline.cpp</FILENAME><LINE>48</LINE><COLUMN>18</COLUMN></SFA><DEFECTCODE>6031</DEFECTCODE><DESCRIPTION>Return value ignored: 'sscanf'.</DESCRIPTION><FUNCTION>Tmx::Polyline::Parse</FUNCTION><DECORATED>?Parse@Polyline@Tmx@@QAEXPBVXMLNode@tinyxml2@@@Z</DECORATED><FUNCLINE>40</FUNCLINE><PATH/></DEFECT></DEFECTS>

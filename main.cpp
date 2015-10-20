@@ -14,10 +14,10 @@
 
 using namespace std;
 
-#define WIN_NAME L"Maria Ozawa"
-#define WIN_TITLE L"Maria Ozawa"
-#define SCREEN_WIDTH 400
-#define SCREEN_HEIGHT 400
+#define WIN_NAME L"Demo Beizer Curve"
+#define WIN_TITLE L"Demo Beizer Curve"
+#define SCREEN_WIDTH 1000
+#define SCREEN_HEIGHT 768
 #define FPS 60
 #define KEYBOARD_BUFFERD_SIZE 1024
 
@@ -153,12 +153,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
+        case WM_DESTROY:
+            GameGlobal::isGameRunning = false;
+            PostQuitMessage(0);
+            break;
 
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
+        default:
+            return DefWindowProc(hWnd, message, wParam, lParam);
     }
 
     return 0;

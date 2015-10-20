@@ -6,6 +6,7 @@ LPD3DXSPRITE GameGlobal::mSpriteHandler = NULL;
 int GameGlobal::mWidth = 960;
 int GameGlobal::mHeight = 640;
 LPDIRECT3DDEVICE9 GameGlobal::mDevice = nullptr;
+bool GameGlobal::isGameRunning = true;
 
 GameGlobal::GameGlobal()
 {

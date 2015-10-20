@@ -15,11 +15,11 @@ class Animation
 {
 public:
     //ham ho tro lay animation voi anh co duy nhat 1 hang
-    Animation(LPD3DXSPRITE spriteHandler, LPWSTR filePath, int totalFrame, int rows, int columns, float timePerFrame = 0.1f, D3DCOLOR colorKey = NULL);
+    Animation(const char* filePath, int totalFrame, int rows, int columns, float timePerFrame = 0.1f, D3DCOLOR colorKey = NULL);
 
     Animation();
 
-    void InitWithAnimation(LPD3DXSPRITE spriteHandler, LPWSTR filePath, int totalFrame, int rows, int columns, float timePerFrame = 0.1f, D3DCOLOR colorKey = NULL);
+    void InitWithAnimation(const char* filePath, int totalFrame, int rows, int columns, float timePerFrame = 0.1f, D3DCOLOR colorKey = NULL);
 
     void Update(float dt);
 

@@ -30,13 +30,14 @@ public:
     static void SetHeight(int height);
     static int GetHeight();
 
+    static bool isGameRunning; //trang thai xem game co dang chay khong
 private:
     static HINSTANCE mHInstance;
     static HWND mHwnd;
     static LPD3DXSPRITE mSpriteHandler;
     static int mWidth, mHeight;
     static LPDIRECT3DDEVICE9 mDevice;
-
+    
 };
 
 #endif

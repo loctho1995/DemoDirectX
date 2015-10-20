@@ -15,6 +15,7 @@
 #include "SceneManager.h"
 #include "Shader.h"
 #include "SceneGamePlay.h"
+#include "TestScene.h"
 
 #define KEYBOARD_BUFFERD_SIZE 1024
 
@@ -34,13 +35,25 @@ protected:
     static int              mIsDone;
     float                   mFPS;
 
+    //khoi tao vong lap cho game
     void InitLoop();
+
+    //init input cho game
     void InitInput();
+
+    //ham dung de ve sau khi update
     void Render();
+
+    //ham load content duoc goi khi khoi tao game va chi goi 1 lan
     void LoadContent();  
 
+    //ham update cua game
     void Update(float dt);
+
+    //ham nhan su kien khi co keydown
     void OnKeyDown(int keyCode);
+
+    //ham nhan su kien khi co keyup
     void OnKeyUp(int keyCode);
 
     LPDIRECT3DSURFACE9 createSurfaceFromFile(LPDIRECT3DDEVICE9 device, LPWSTR filePath);

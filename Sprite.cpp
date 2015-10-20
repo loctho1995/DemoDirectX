@@ -1,9 +1,9 @@
 #include "Sprite.h"
 #include "GameLog.h"
 
-Sprite::Sprite(LPD3DXSPRITE spriteHandler, LPWSTR filePath, RECT *sourceRect, int width, int height, D3DCOLOR colorKey)
+Sprite::Sprite(const char* filePath, RECT *sourceRect, int width, int height, D3DCOLOR colorKey)
 {    
-    this->InitWithSprite(spriteHandler, filePath, sourceRect, width, height, colorKey);
+    this->InitWithSprite(filePath, sourceRect, width, height, colorKey);
 }
 
 Sprite::Sprite()
@@ -23,10 +23,10 @@ Sprite::~Sprite()
     }        
 }
 
-void Sprite::InitWithSprite(LPD3DXSPRITE spriteHandler, LPWSTR filePath, RECT *sourceRect, int width, int height, D3DCOLOR colorKey)
+void Sprite::InitWithSprite(const char* filePath, RECT *sourceRect, int width, int height, D3DCOLOR colorKey)
 {
     HRESULT result;
-    mSpriteHandler = spriteHandler;
+    mSpriteHandler = GameGlobal::GetCurrentSpriteHandler();
     mPosition = D3DXVECTOR3(0, 0, 0);
     mRotation = 0;
     mRotationCenter = D3DXVECTOR2(mPosition.x, mPosition.y);
@@ -45,13 +45,11 @@ void Sprite::InitWithSprite(LPD3DXSPRITE spriteHandler, LPWSTR filePath, RECT *s
     //convert from LPWSTR to char*
 
 #if _DEBUG
-    char bufferd[2048];
-    wcstombs(bufferd, filePath, 2048);
-    result = D3DXGetImageInfoFromFile(filePath, &mImageInfo);
+    result = D3DXGetImageInfoFromFileA(filePath, &mImageInfo);
 
     if (result != D3D_OK)
     {
-        GAMELOG("[Error] get image info failed %s", bufferd);
+        GAMELOG("[Error] get image info failed %s", filePath);
         return;
     }
 #endif
@@ -77,9 +75,9 @@ void Sprite::InitWithSprite(LPD3DXSPRITE spriteHandler, LPWSTR filePath, RECT *s
         mHeight = height;
 
     LPDIRECT3DDEVICE9 device;
-    spriteHandler->GetDevice(&device);
+    mSpriteHandler->GetDevice(&device);
 
-    result = D3DXCreateTextureFromFileEx(
+    result = D3DXCreateTextureFromFileExA(
         device,
         filePath,
         mImageInfo.Width,
@@ -154,7 +152,7 @@ void Sprite::Draw(D3DXVECTOR3 position, RECT *sourceRect, D3DXVECTOR2 scale, D3D
 
     D3DXVECTOR3 inPosition = mPosition;
     RECT *inSourceRect = mSourceRect;
-    float inRotation = angle;
+    float inRotation = mRotation;
     D3DXVECTOR2 inCcale = mScale;
     D3DXVECTOR2 inTranslation = mTranslation;
     D3DXVECTOR2 inRotationCenter = mRotationCenter;
@@ -219,6 +217,11 @@ void Sprite::SetPosition(D3DXVECTOR3 pos)
 void Sprite::SetPosition(float x, float y)
 {
     mPosition = D3DXVECTOR3(x, y, 0);
+}
+
+void Sprite::SetPosition(D3DXVECTOR2 pos)
+{
+    this->SetPosition(pos.x, pos.y);
 }
 
 D3DXVECTOR3 Sprite::GetPosition()
@@ -286,7 +289,7 @@ float Sprite::GetRotation()
     return mRotation;
 }
 
-void Sprite::SetRotation(float rotation) // by radian
+void Sprite::SetRotation(float rotation) 
 {
     mRotation = rotation;
 }

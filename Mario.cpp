@@ -308,10 +308,10 @@ void Mario::Update(float dt)
 
 void Mario::LoadAnimations()
 {
-    mAnimationStanding = new Animation(GameGlobal::GetCurrentSpriteHandler(), L"mario/standingright.png", 1, 1, 1, 0);
-    mAnimationJumping = new Animation(GameGlobal::GetCurrentSpriteHandler(), L"mario/jumpingright.png", 1, 1, 1, 0);
-    mAnimationRunning = new Animation(GameGlobal::GetCurrentSpriteHandler(), L"mario/runningright.png", 2, 1, 2, 0.15f);
-    mAnimmationTurningBack = new Animation(GameGlobal::GetCurrentSpriteHandler(), L"mario/turnback.png", 1, 1, 1, 0);
+    mAnimationStanding = new Animation("mario/standingright.png", 1, 1, 1, 0);
+    mAnimationJumping = new Animation("mario/jumpingright.png", 1, 1, 1, 0);
+    mAnimationRunning = new Animation("mario/runningright.png", 2, 1, 2, 0.15f);
+    mAnimmationTurningBack = new Animation("mario/turnback.png", 1, 1, 1, 0);
 
     mCurrentAnimation = mAnimationStanding;
 }

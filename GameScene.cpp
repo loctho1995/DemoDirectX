@@ -48,14 +48,14 @@ void GameScene::LoadContent()
     sourceRECT.right = sourceRECT.left + 32;
     sourceRECT.bottom = sourceRECT.top + 32;
 
-    mSpriteBricks = new Sprite(GameGlobal::GetCurrentSpriteHandler(), L"mariotileset.png", &sourceRECT);
+    mSpriteBricks = new Sprite("mariotileset.png", &sourceRECT);
 
     //brick gold
     sourceRECT.left = 32 * 24; //toa do x trong tileset
     sourceRECT.top = 0; //toa do y trong tileset
     sourceRECT.right = sourceRECT.left + 32;
     sourceRECT.bottom = sourceRECT.top + 32;
-    mSpriteBrickGold = new Sprite(GameGlobal::GetCurrentSpriteHandler(), L"mariotileset.png", &sourceRECT);
+    mSpriteBrickGold = new Sprite("mariotileset.png", &sourceRECT);
 
     mGameDebugDraw = new GameDebugDraw(GameGlobal::GetCurrentSpriteHandler());
 

@@ -5,14 +5,14 @@ Animation::Animation()
 
 }
 
-Animation::Animation(LPD3DXSPRITE spriteHandler,LPWSTR filePath, int totalFrame, int rows, int columns, float timePerFrame, D3DCOLOR colorKey)
+Animation::Animation(const char* filePath, int totalFrame, int rows, int columns, float timePerFrame, D3DCOLOR colorKey)
 {
-    InitWithAnimation(spriteHandler, filePath, totalFrame, rows, columns, timePerFrame, colorKey);
+    InitWithAnimation(filePath, totalFrame, rows, columns, timePerFrame, colorKey);
 }
 
-void Animation::InitWithAnimation(LPD3DXSPRITE spriteHandler, LPWSTR filePath, int totalFrame, int rows, int columns, float timePerFrame, D3DCOLOR colorKey)
+void Animation::InitWithAnimation(const char* filePath, int totalFrame, int rows, int columns, float timePerFrame, D3DCOLOR colorKey)
 {
-    mSprite = new Sprite(spriteHandler, filePath, NULL, 0, 0, colorKey);
+    mSprite = new Sprite(filePath, NULL, 0, 0, colorKey);
     mCurrentColumn = 0;
     mCurrentRow = 0;
     mTimePerFrame = timePerFrame;

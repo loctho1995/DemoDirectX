@@ -44,9 +44,6 @@
     <Filter Include="FramWork\GameObjects\Mario">
       <UniqueIdentifier>{f4a1991d-81eb-43ba-b849-9c0a7e8d0c1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FramWork\GameObjects\GameScenes">
-      <UniqueIdentifier>{34d8ad73-177c-45d9-8112-7de402d76d6d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -64,12 +61,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>FramWork\GameComponents</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="GameMap.cpp">
       <Filter>FramWork\GameComponents</Filter>
     </ClCompile>
@@ -77,12 +68,6 @@
       <Filter>FramWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
       <Filter>FramWork\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="GameGlobal.cpp">
@@ -178,11 +163,26 @@
     <ClCompile Include="BrickGold.cpp">
       <Filter>FramWork\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>FramWork\GameObjects\GameScenes</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>FramWork\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScene.cpp">
+      <Filter>FramWork\GameScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>FramWork\GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>FramWork\GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>FramWork\GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>FramWork\GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>FramWork\GameScenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -198,14 +198,8 @@
     <ClInclude Include="GameTime.h">
       <Filter>FramWork\GameComponents</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>FramWork\GameComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>FramWork\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GameMap.h">
       <Filter>FramWork\GameComponents</Filter>
@@ -214,12 +208,6 @@
       <Filter>FramWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
       <Filter>FramWork\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GameGlobal.h">
@@ -327,11 +315,29 @@
     <ClInclude Include="BrickGold.h">
       <Filter>FramWork\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>FramWork\GameObjects\GameScenes</Filter>
-    </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>FramWork\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>FramWork\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>FramWork\GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>FramWork\GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>FramWork\GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>FramWork\GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGraphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>FramWork\GameScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,4 @@
 #include "Game.h"
-int Game::mIsDone = 0;
 
 Game::Game(int fps, int width, int height)
 {
@@ -10,7 +9,7 @@ Game::Game(int fps, int width, int height)
     GameGlobal::SetHeight(height);
     InitInput();
 
-    Scene *newScene = new SceneGamePlay();
+    Scene *newScene = new TestScene(); //= new SceneGamePlay();
     SceneManager::GetInstance()->ReplaceScene(newScene);
 
     LoadContent();
@@ -98,10 +97,10 @@ void Game::Render()
 void Game::InitLoop()
 {
     MSG msg;
-    mIsDone = 0;
+
     float tickPerFrame = 1.0f / mFPS, delta = 0;
 
-    while (!mIsDone)
+    while (GameGlobal::isGameRunning)
     {
         GameTime::GetInstance()->StartCounter();
 

@@ -5,6 +5,7 @@ Scene::Scene()
 {
     mSpriteHandler = GameGlobal::GetCurrentSpriteHandler();
     mBackColor = 0x4866ff;
+    LoadContent();
 }
 
 

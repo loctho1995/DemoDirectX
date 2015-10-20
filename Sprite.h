@@ -4,10 +4,12 @@
 #include <d3dx9.h>
 
 #include "GameConverter.h"
+#include "GameGlobal.h"
+
 class Sprite
 {
 public:
-    Sprite(LPD3DXSPRITE spriteHandler,LPWSTR filePath, RECT *sourceRect = NULL, int width = NULL, int height = NULL, D3DCOLOR colorKey = NULL);
+    Sprite(const char* filePath, RECT *sourceRect = NULL, int width = NULL, int height = NULL, D3DCOLOR colorKey = NULL);
 
     Sprite();
 
@@ -29,6 +31,7 @@ public:
     D3DXVECTOR3 GetPosition();
     void SetPosition(D3DXVECTOR3 pos);
     void SetPosition(float x, float y);
+    void SetPosition(D3DXVECTOR2 pos);
 
     D3DXVECTOR2 GetScale();
     void SetScale(D3DXVECTOR2 scale);
@@ -64,7 +67,7 @@ public:
 
 protected:
     //su dung cho ke thua
-    void InitWithSprite(LPD3DXSPRITE spriteHandler, LPWSTR filePath, RECT *sourceRect = NULL, int width = NULL, int height = NULL, D3DCOLOR colorKey = NULL);
+    void InitWithSprite(const char* filePath, RECT *sourceRect = NULL, int width = NULL, int height = NULL, D3DCOLOR colorKey = NULL);
 
     D3DXVECTOR3             mPosition; // vi tri cua Sprite, co goc la chinh giua hinh anh Texture
     LPDIRECT3DTEXTURE9      mTexture; // load hinh anh vao day

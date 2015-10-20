@@ -7,6 +7,8 @@ GameDebugDraw::GameDebugDraw(LPD3DXSPRITE spriteHandler)
     mSpriteHandler->GetDevice(&mddv);
     D3DXCreateLine(mddv, &LineDraw);
     LineDraw->SetWidth(10);
+    mColor = D3DCOLOR_XRGB(71, 85, 119);
+    
 }
 
 GameDebugDraw::~GameDebugDraw()
@@ -26,7 +28,7 @@ void GameDebugDraw::setLineSize(float width)
 void GameDebugDraw::DrawLine(D3DXVECTOR2 lines[], int count)
 {
     LineDraw->Begin();
-    LineDraw->Draw(lines, count, D3DCOLOR_XRGB(255, 0, 0));
+    LineDraw->Draw(lines, count, mColor);
     LineDraw->End();
 }
 
@@ -39,4 +41,9 @@ void GameDebugDraw::DrawRect(RECT rect)
                             D3DXVECTOR2(rect.left, rect.top) };
 
     DrawLine(lines, 5);
+}
+
+void GameDebugDraw::setColor(D3DCOLOR color)
+{
+    mColor = color;
 }

@@ -21,9 +21,9 @@ void GameMap::LoadMap(char* filePath)
     {
         const Tmx::Tileset *tileset = mMap->GetTileset(i);
         
-        wchar_t *unicodePath = GameConverter::StringToWSTR(tileset->GetImage()->GetSource());
+        //wchar_t *unicodePath = GameConverter::StringToWSTR(tileset->GetImage()->GetSource());
 
-        Sprite *sprite = new Sprite(mSpriteHandler, unicodePath);
+        Sprite *sprite = new Sprite(tileset->GetImage()->GetSource().c_str());
         mListTileset.insert(pair<int, Sprite*>(i, sprite));
     }
 }

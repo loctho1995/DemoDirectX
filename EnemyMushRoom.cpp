@@ -2,7 +2,7 @@
 
 EnemyMushRoom::EnemyMushRoom(float x, float y, Camera *camera)
 {
-    this->InitWithAnimation(GameGlobal::GetCurrentSpriteHandler(), L"mario/enemies/mushroom.png", 2, 1, 2, MUSH_ROOM_ANIMATION_TIME);
+    this->InitWithAnimation("mario/enemies/mushroom.png", 2, 1, 2, MUSH_ROOM_ANIMATION_TIME);
     this->SetPosition(x, y);
     State = MushroomStates::RunningLeft;
     mName = Enemy::EnemyName::MushRoom;
