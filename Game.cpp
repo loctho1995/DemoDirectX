@@ -9,7 +9,7 @@ Game::Game(int fps, int width, int height)
     GameGlobal::SetHeight(height);
     InitInput();
 
-    Scene *newScene = new TestScene(); //= new SceneGamePlay();
+    Scene *newScene = new SceneGamePlay();
     SceneManager::GetInstance()->ReplaceScene(newScene);
 
     LoadContent();
