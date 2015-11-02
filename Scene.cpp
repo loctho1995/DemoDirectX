@@ -40,6 +40,11 @@ void Scene::OnKeyUp(int keyCode)
     
 }
 
+void Scene::OnMouseDown(float x, float y)
+{
+
+}
+
 bool Scene::IsKeyPress(int keyCode)
 {
     return GameInput::GetInstance()->IsKeyDown(keyCode);

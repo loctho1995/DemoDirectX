@@ -9,7 +9,7 @@ Game::Game(int fps, int width, int height)
     GameGlobal::SetHeight(height);
     InitInput();
 
-    Scene *newScene = new SceneGamePlay();
+    Scene *newScene = new TestScene(); //new SceneGamePlay();
     SceneManager::GetInstance()->ReplaceScene(newScene);
 
     LoadContent();
@@ -60,6 +60,11 @@ void Game::OnKeyDown(int keyCode)
 void Game::OnKeyUp(int keyCode)
 {
     SceneManager::GetInstance()->GetCurrentScene()->OnKeyUp(keyCode);
+}
+
+void Game::OnMouseDown(float x, float y)
+{
+    SceneManager::GetInstance()->GetCurrentScene()->OnMouseDown(x, y);
 }
 
 void Game::Update(float dt)

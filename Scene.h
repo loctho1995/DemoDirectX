@@ -16,6 +16,7 @@ public:
     virtual void Draw();
     virtual void OnKeyDown(int keyCode);
     virtual void OnKeyUp(int keyCode);
+    virtual void OnMouseDown(float x, float y);
     bool IsKeyPress(int keyCode);
     D3DCOLOR GetBackcolor();
 

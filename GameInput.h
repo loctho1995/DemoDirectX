@@ -19,6 +19,7 @@ public:
     void UpdateInput();
     void OnKeyDown(int keyCode);
     void OnKeyUp(int keyCode);
+    void OnMouseDown(float x, float y);
     int IsKeyDown(int keyCode);
     void SetKeyboardUser(IInput *user);
     ~GameInput();

@@ -144,3 +144,8 @@ int GameInput::IsKeyDown(int keyCode)
 {
     return (mKeyStates[keyCode] & 0x80) > 0;
 }
+
+void GameInput::OnMouseDown(float x, float y)
+{
+    mInputUser->OnMouseDown(x, y);
+}

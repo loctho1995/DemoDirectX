@@ -3,6 +3,7 @@
 /*
 bam phim d: de hien/an cac duong line noi cac diem (control points)
 bam phim h: de an/hien tat ca (tru sprite arrow)
+bam phim m: de dung chuot bam vao man hinh
 
 bam numberpad1: de ve bezier bac 2
 bam numberpad2: de ve bezier bac 3
@@ -39,6 +40,7 @@ void TestScene::LoadContent()
     dotDistanceCounter = 0;
     isPause = false;
     isDebugDraw = false;
+    isUseMouse = false;
 
     dot = new Sprite("dot.png");
     dot2 = new Sprite("dot2.png");
@@ -155,6 +157,13 @@ void TestScene::OnKeyDown(int keyCode)
     if (keyCode == DIK_H)
         isHideAll = !isHideAll;
 
+    if (keyCode == DIK_M)
+    {
+        isUseMouse = !isUseMouse;
+        points.clear();
+    }
+        
+
     //chay bezier bac 2
     if (keyCode == DIK_NUMPAD1)
     {
@@ -236,6 +245,17 @@ void TestScene::OnKeyDown(int keyCode)
 void TestScene::OnKeyUp(int keyCode)
 {
 
+}
+
+void TestScene::OnMouseDown(float x, float y)
+{
+    points.push_back(D3DXVECTOR2(x, y));
+    savePoints.clear();
+
+    for (size_t i = 0; i < numSprite; i++)
+    {
+        sprites.at(i)->SetPosition(points.at(0));
+    }
 }
 
 //tinh giai thua

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <dinput.h>
+#include <windowsx.h>
 #include "Sprite.h"
 #include "Game.h"
 #include "GameLog.h"
@@ -11,6 +12,7 @@
 #include "SceneManager.h"
 #include "SceneGamePlay.h"
 #include "GameInput.h"
+
 
 using namespace std;
 
@@ -156,6 +158,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case WM_DESTROY:
             GameGlobal::isGameRunning = false;
             PostQuitMessage(0);
+            break;
+
+        case WM_LBUTTONDOWN:
+            GameInput::GetInstance()->OnMouseDown((float)GET_X_LPARAM(lParam), (float)GET_Y_LPARAM(lParam));
+            //InvalidateRgn(hWnd, NULL, TRUE);
+
             break;
 
         default:

@@ -67,9 +67,6 @@
     <ClCompile Include="GameConverter.cpp">
       <Filter>FramWork\GameComponents</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="GameGlobal.cpp">
       <Filter>FramWork\GameComponents</Filter>
     </ClCompile>
@@ -184,6 +181,9 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>FramWork\GameScenes</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>FramWork\GameComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInput.h">
@@ -206,9 +206,6 @@
     </ClInclude>
     <ClInclude Include="GameConverter.h">
       <Filter>FramWork\GameComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>FramWork\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GameGlobal.h">
       <Filter>FramWork\GameComponents</Filter>
@@ -338,6 +335,9 @@
     </ClInclude>
     <ClInclude Include="GameScene.h">
       <Filter>FramWork\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>FramWork\GameComponents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

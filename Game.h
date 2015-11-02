@@ -56,6 +56,9 @@ protected:
     //ham nhan su kien khi co keyup
     void OnKeyUp(int keyCode);
 
+    //su kien Mouse Down
+    void OnMouseDown(float x, float y);
+
     LPDIRECT3DSURFACE9 createSurfaceFromFile(LPDIRECT3DDEVICE9 device, LPWSTR filePath);
 };
 

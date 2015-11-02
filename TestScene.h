@@ -21,6 +21,7 @@ public:
 
     void OnKeyDown(int keyCode);
     void OnKeyUp(int keyCode);
+    void OnMouseDown(float x, float y);
 
     //tinh n giao thua
     unsigned int Factorial(int n);
@@ -45,7 +46,7 @@ public:
     float xDistance, yDistance;
     Sprite *dot, *dot2; //sprite ve 1 cham len man hinh
     D3DXVECTOR2 previousPoint;    
-    bool isPause, isDebugDraw, isHideAll;
+    bool isPause, isDebugDraw, isHideAll, isUseMouse;
     GameDebugDraw *debugDraw;
 };
 
