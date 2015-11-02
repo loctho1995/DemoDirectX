@@ -4,6 +4,7 @@
 bam phim d: de hien/an cac duong line noi cac diem (control points)
 bam phim h: de an/hien tat ca (tru sprite arrow)
 bam phim m: de dung chuot bam vao man hinh
+bam phim b: de ve duong cong bezier
 
 bam numberpad1: de ve bezier bac 2
 bam numberpad2: de ve bezier bac 3
@@ -29,6 +30,8 @@ TestScene::~TestScene()
 void TestScene::LoadContent()
 {
     debugDraw = new GameDebugDraw(GameGlobal::GetCurrentSpriteHandler());
+    drawBezier = new GameDebugDraw(GameGlobal::GetCurrentSpriteHandler());
+    drawBezier->setLineSize(1.6f);
     debugDraw->setLineSize(3);
 
     speed = 1.0;
@@ -41,6 +44,7 @@ void TestScene::LoadContent()
     isPause = false;
     isDebugDraw = false;
     isUseMouse = false;
+    isDrawBezier = false;
 
     dot = new Sprite("dot.png");
     dot2 = new Sprite("dot2.png");
@@ -49,6 +53,8 @@ void TestScene::LoadContent()
     points.push_back(D3DXVECTOR2(100, 100));
     points.push_back(D3DXVECTOR2(400, 300));
     points.push_back(D3DXVECTOR2(200, 600));
+
+    updateFullPoints();
 
     for (size_t i = 0; i < numSprite; i++)
     {
@@ -127,6 +133,12 @@ void TestScene::Draw()
         //GAMELOG("x: %f; y: %f", sprites.at(i)->GetPosition().x, sprites.at(i)->GetPosition().y);
     }
 
+    if (isDrawBezier)
+    {
+        if (fullPoints.size() >= 2)
+            drawBezier->DrawLine(&fullPoints[0], fullPoints.size());
+    }
+
     if (!isHideAll)
     {
         for (size_t i = 0; i < savePoints.size(); i++)
@@ -162,6 +174,11 @@ void TestScene::OnKeyDown(int keyCode)
         isUseMouse = !isUseMouse;
         points.clear();
     }
+
+    if (keyCode == DIK_B)
+    {
+        isDrawBezier = !isDrawBezier;
+    }
         
 
     //chay bezier bac 2
@@ -174,6 +191,8 @@ void TestScene::OnKeyDown(int keyCode)
         points.push_back(D3DXVECTOR2(100, 100));
         points.push_back(D3DXVECTOR2(400, 300));
         points.push_back(D3DXVECTOR2(200, 600));
+
+        updateFullPoints();
     }
 
     //chay bezier bac 3
@@ -187,6 +206,8 @@ void TestScene::OnKeyDown(int keyCode)
         points.push_back(D3DXVECTOR2(400, 200));
         points.push_back(D3DXVECTOR2(200, 400));
         points.push_back(D3DXVECTOR2(500, 600));
+
+        updateFullPoints();
     }
 
     //chay bezier bac 4
@@ -201,6 +222,8 @@ void TestScene::OnKeyDown(int keyCode)
         points.push_back(D3DXVECTOR2(200, 400));
         points.push_back(D3DXVECTOR2(400, 600));
         points.push_back(D3DXVECTOR2(650, 250));
+
+        updateFullPoints();
     }
 
     //bac 12
@@ -223,6 +246,8 @@ void TestScene::OnKeyDown(int keyCode)
         points.push_back(D3DXVECTOR2(400, 450));
         points.push_back(D3DXVECTOR2(150, 650));
         points.push_back(D3DXVECTOR2(900, 680));
+
+        updateFullPoints();
     }
 
     if (keyCode == DIK_ADD)
@@ -249,12 +274,27 @@ void TestScene::OnKeyUp(int keyCode)
 
 void TestScene::OnMouseDown(float x, float y)
 {
+    if (!isUseMouse)
+        return;
+
     points.push_back(D3DXVECTOR2(x, y));
     savePoints.clear();
 
     for (size_t i = 0; i < numSprite; i++)
     {
         sprites.at(i)->SetPosition(points.at(0));
+    }
+
+    updateFullPoints();
+}
+
+void TestScene::updateFullPoints()
+{
+    fullPoints.clear();
+
+    for (float x = 0.01; x <= 1; x += 0.01f)
+    {
+        fullPoints.push_back(CalculateSinglePoint(x, points));
     }
 }
 

@@ -22,6 +22,7 @@ public:
     void OnKeyDown(int keyCode);
     void OnKeyUp(int keyCode);
     void OnMouseDown(float x, float y);
+    void updateFullPoints();
 
     //tinh n giao thua
     unsigned int Factorial(int n);
@@ -36,6 +37,7 @@ public:
     std::vector<Sprite*> sprites;
     std::vector<D3DXVECTOR2> points;
     std::vector<D3DXVECTOR2> savePoints;
+    std::vector<D3DXVECTOR2> fullPoints;
     float t;
     float speed; //toc do t de ve bezier (t = 0.01f / speed)
     int frameDelay; //delay frame
@@ -46,7 +48,7 @@ public:
     float xDistance, yDistance;
     Sprite *dot, *dot2; //sprite ve 1 cham len man hinh
     D3DXVECTOR2 previousPoint;    
-    bool isPause, isDebugDraw, isHideAll, isUseMouse;
-    GameDebugDraw *debugDraw;
+    bool isPause, isDebugDraw, isHideAll, isUseMouse, isDrawBezier;
+    GameDebugDraw *debugDraw, *drawBezier;
 };
 
