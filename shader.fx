@@ -1,45 +1,41 @@
-/*
+float4x4 World;
+float4x4 View;
+float4x4 Projection;
 
-% Description of my shader.
-% Second line of description for my shader.
+float4 AmbientColor = float4(1, 1, 1, 1);
+float AmbientIntensity = 0.1;
 
-keywords: material classic
-
-date: YYMMDD
-
-*/
-
-float4x4 WorldViewProj : WorldViewProjection;
-
-struct VS_INPUT
+struct VertexShaderInput
 {
-	float3 Position : POSITION0;
-	float3 Color : COLOR0;
+    float4 Position : POSITION0;
 };
 
-struct VS_OUTPUT
+struct VertexShaderOutput
 {
-	float4 NewPosition : POSITION0;
-	float InterpolatedColor : COLOR0;
+    float4 Position : POSITION0;
 };
 
-VS_OUTPUT mainVS(VS_INPUT vsIn)
+VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {
-	VS_OUTPUT outp;
-	outp.NewPosition = mul(float4(vsIn.Position.xyz, 1.0), WorldViewProj);
-	outp.InterpolatedColor = vsIn.Color;
-	return outp;
+    VertexShaderOutput output;
+
+    float4 worldPosition = mul(input.Position, World);
+    float4 viewPosition = mul(worldPosition, View);
+    output.Position = mul(viewPosition, Projection);
+
+    return output;
 }
 
-float4 mainPS(VS_OUTPUT pIn) : COLOR
-{	
-	return pIn.InterpolatedColor;
+float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
+{
+    return AmbientColor * AmbientIntensity;
 }
 
-technique technique0 {
-	pass p0 {
-		CullMode = None;
-		VertexShader = compile vs_3_0 mainVS();
-		PixelShader = compile ps_3_0 mainPS();
-	}
+technique Ambient
+{
+    pass Pass1
+    {
+        VertexShader = compile vs_2_0 VertexShaderFunction();
+        PixelShader = compile ps_2_0 PixelShaderFunction();
+    }
 }

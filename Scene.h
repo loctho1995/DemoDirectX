@@ -14,6 +14,8 @@ public:
     virtual void Update(float dt);
     virtual void LoadContent();
     virtual void Draw();
+    //duoc goi sau khi Device->EndScene();
+    virtual void DoEndScene();
     virtual void OnKeyDown(int keyCode);
     virtual void OnKeyUp(int keyCode);
     virtual void OnMouseDown(float x, float y);

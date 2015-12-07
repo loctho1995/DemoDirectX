@@ -54,3 +54,8 @@ D3DCOLOR Scene::GetBackcolor()
 {
     return mBackColor;
 }
+
+void Scene::DoEndScene()
+{
+
+}

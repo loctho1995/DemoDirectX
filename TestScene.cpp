@@ -16,16 +16,38 @@ bam -: de giam toc do
 
 */
 
+#define D3DFVF_CUSTOMVERTEX ( D3DFVF_XYZ | D3DFVF_TEX1 )
+
+struct VertexData
+{
+    D3DXVECTOR3 Position;
+    D3DCOLOR Color;
+};
+
+LPDIRECT3DVERTEXBUFFER9 vertexBuffer = NULL;
+
+VertexData vertexData[] =
+{
+    //  x     y     z       color
+    { D3DXVECTOR3(-1.0f, 1.0f, 0.0f), D3DCOLOR_XRGB(255, 0, 0)},
+    { D3DXVECTOR3(1.0f, 1.0f, 0.0f), D3DCOLOR_XRGB(0, 255, 0) },
+    { D3DXVECTOR3(-1.0f, -1.0f, 0.0f), D3DCOLOR_XRGB(0, 0, 255) },
+    { D3DXVECTOR3(1.0f, -1.0f, 0.0f), D3DCOLOR_XRGB(10, 150, 250) }
+};
+
+//
+//LPDIRECT3DTEXTURE9 pTexture_0 = NULL;
+//LPDIRECT3DTEXTURE9 pTexture_1 = NULL;
+
 TestScene::TestScene()
 {
     this->mBackColor = 0x54acd2;
-}
 
+}
 
 TestScene::~TestScene()
 {
 }
-
 
 void TestScene::LoadContent()
 {
@@ -39,6 +61,7 @@ void TestScene::LoadContent()
     frameDelay = 0;
     numSprite = 10;
     xDistance = yDistance = 0;
+    timer = 0;
     dotDistance = 0;
     dotDistanceCounter = 0;
     isPause = false;
@@ -62,6 +85,42 @@ void TestScene::LoadContent()
     }
 
     previousPoint = CalculateSinglePoint(0, points);
+
+    initEffect();
+}
+
+void TestScene::initEffect()
+{
+    LPD3DXBUFFER bufferErrors = NULL;
+    HRESULT hr;
+
+    D3DXMatrixIdentity(&world);
+    D3DXMatrixIdentity(&view);
+    D3DXMatrixIdentity(&proj);
+
+    D3DXMatrixPerspectiveFovLH(&proj, D3DXToRadian(40.0f), (float)GameGlobal::GetWidth() / (float)GameGlobal::GetHeight(), 0.0f, 100.0f);
+
+    unsigned int vertexDataSize = 4 * sizeof(VertexData);
+
+    //create vertex buffer
+    GameGlobal::GetCurrentDevice()->CreateVertexBuffer(vertexDataSize, D3DUSAGE_WRITEONLY, D3DFVF_CUSTOMVERTEX, 
+                                                        D3DPOOL_DEFAULT, &vertexBuffer, 0);
+
+    void *pVertices = NULL;
+    vertexBuffer->Lock(0, vertexDataSize, (void**)&pVertices, 0);
+    memcpy(pVertices, vertexData, vertexDataSize);
+    vertexBuffer->Unlock();
+
+    hr = D3DXCreateEffectFromFileA(GameGlobal::GetCurrentDevice(), "Empty.fx", 0, 0, 0, 0, &effect, &bufferErrors);
+
+    D3DXMatrixTranslation(&view, 0, 0, 2.75);
+    effect->SetMatrix("WorldViewProj", &(world * view * proj));
+
+    D3DXCreateTexture(GameGlobal::GetCurrentDevice(), GameGlobal::GetWidth(), GameGlobal::GetHeight(), D3DX_DEFAULT,
+                            D3DUSAGE_RENDERTARGET, D3DFMT_A8B8G8R8, D3DPOOL_DEFAULT, &texture0);
+
+    //init texture
+    //D3DXCreateTextureFromFileA(GameGlobal::GetCurrentDevice(), "voclandd.png", &texture0);
 }
 
 void TestScene::Update(float dt)
@@ -120,10 +179,13 @@ void TestScene::Update(float dt)
         }
         //GAMELOG("x: %f ; y: %f", sprite->GetPosition().x, sprite->GetPosition().y);
     }    
+
+    timer += 0.01f;
 }
 
 void TestScene::Draw()
 {
+
     if (isDebugDraw)
         debugDraw->DrawLine(&points[0], points.size());
 
@@ -147,7 +209,7 @@ void TestScene::Draw()
             dot->Draw(pos);
         }
     }
-    
+
     if (!isHideAll)
     {
         for (size_t i = 0; i < points.size(); i++)
@@ -156,6 +218,33 @@ void TestScene::Draw()
             dot2->Draw(pos);
         }
     }
+}
+
+void TestScene::DoEndScene()
+{
+    IDirect3DSurface9 *surface;
+    texture0->GetSurfaceLevel(0, &surface);
+    D3DXLoadSurfaceFromSurface(surface, NULL, NULL, GameGlobal::backSurface, NULL, NULL, D3DX_FILTER_NONE, 0);
+    //GameGlobal::GetCurrentDevice()->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 255, 255), 0.0, 0);
+    surface->Release();
+
+    effect->SetTexture("texture0", texture0);
+    effect->SetFloat("timer", timer);
+
+    UINT numpasses = 0;
+    effect->Begin(&numpasses, 0);
+    {
+        for (UINT i = 0; i < numpasses; ++i)
+        {
+            effect->BeginPass(i);
+            GameGlobal::GetCurrentDevice()->SetStreamSource(0, vertexBuffer, 0, sizeof(VertexData));
+            GameGlobal::GetCurrentDevice()->SetFVF(D3DFVF_CUSTOMVERTEX);
+            GameGlobal::GetCurrentDevice()->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
+            effect->EndPass();
+        }
+    }
+
+    effect->End();
 }
 
 void TestScene::OnKeyDown(int keyCode)

@@ -9,7 +9,7 @@ Game::Game(int fps, int width, int height)
     GameGlobal::SetHeight(height);
     InitInput();
 
-    Scene *newScene = new TestScene(); //new SceneGamePlay();
+    Scene *newScene = new TestScene();
     SceneManager::GetInstance()->ReplaceScene(newScene);
 
     LoadContent();
@@ -32,6 +32,7 @@ LPDIRECT3DSURFACE9 Game::createSurfaceFromFile(LPDIRECT3DDEVICE9 device, LPWSTR 
         GAMELOG("[Error] Failed to get image info %s", filePath);
         return NULL;
     }
+
     LPDIRECT3DSURFACE9 surface;
     GameGlobal::GetCurrentDevice()->CreateOffscreenPlainSurface(info.Width, info.Height, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT, &surface, NULL);
 
@@ -47,9 +48,10 @@ LPDIRECT3DSURFACE9 Game::createSurfaceFromFile(LPDIRECT3DDEVICE9 device, LPWSTR 
 
 void Game::LoadContent()
 {
-    GameGlobal::GetCurrentDevice()->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &mBackBuffer);
+    //GameGlobal::GetCurrentDevice()->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &surface);
+    GameGlobal::GetCurrentDevice()->GetRenderTarget(0, &GameGlobal::backSurface);
+
     SceneManager::GetInstance()->GetCurrentScene()->LoadContent();
-    mBackground = createSurfaceFromFile(GameGlobal::GetCurrentDevice(), L"good land1.png");
 }
 
 void Game::OnKeyDown(int keyCode)
@@ -78,21 +80,15 @@ void Game::Update(float dt)
 void Game::Render()
 {
     if (GameGlobal::GetCurrentDevice()->BeginScene())
-    {
-        GameGlobal::GetCurrentDevice()->ColorFill(mBackground, NULL, SceneManager::GetInstance()->GetCurrentScene()->GetBackcolor());
+    {        
+        //GameGlobal::GetCurrentDevice()->Clear(0, NULL, D3DCLEAR_TARGET, SceneManager::GetInstance()->GetCurrentScene()->GetBackcolor(), 0.0, 0);
+        GameGlobal::GetCurrentDevice()->ColorFill(GameGlobal::backSurface, NULL, SceneManager::GetInstance()->GetCurrentScene()->GetBackcolor());
 
-        GameGlobal::GetCurrentDevice()->StretchRect(mBackground,			// from 
-                                NULL,				// which portion?
-                                mBackBuffer,		// to 
-                                NULL,				// which portion?
-                                D3DTEXF_NONE);
-
-        //GAMELOG("ground: %d - buffer: %d" , mBackground, mBackBuffer);
         GameGlobal::GetCurrentSpriteHandler()->Begin(D3DXSPRITE_ALPHABLEND);
         SceneManager::GetInstance()->GetCurrentScene()->Draw();
         GameGlobal::GetCurrentSpriteHandler()->End();
 
-        //mShader->Render();
+        SceneManager::GetInstance()->GetCurrentScene()->DoEndScene();
         GameGlobal::GetCurrentDevice()->EndScene();
     }
 

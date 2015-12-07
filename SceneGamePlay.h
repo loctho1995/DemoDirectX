@@ -29,6 +29,8 @@ public:
    
 private:
    GameScene               *mGameScene;
+   Sprite *sprite;
+   float angle;
 };
 
 #endif

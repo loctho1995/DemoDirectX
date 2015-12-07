@@ -8,6 +8,7 @@
 #include "Scene.h"
 #include "Sprite.h"
 #include "GameDebugDraw.h"
+#include "SceneManager.h"
 
 class TestScene : public Scene
 {
@@ -23,6 +24,8 @@ public:
     void OnKeyUp(int keyCode);
     void OnMouseDown(float x, float y);
     void updateFullPoints();
+    void initEffect();
+    void DoEndScene();
 
     //tinh n giao thua
     unsigned int Factorial(int n);
@@ -50,5 +53,14 @@ public:
     D3DXVECTOR2 previousPoint;    
     bool isPause, isDebugDraw, isHideAll, isUseMouse, isDrawBezier;
     GameDebugDraw *debugDraw, *drawBezier;
+
+    float timer;
+    LPDIRECT3DTEXTURE9 texture0;
+    LPD3DXEFFECT effect;
+    LPDIRECT3DVERTEXBUFFER9 vertexBuffer = NULL;
+    LPDIRECT3DVERTEXDECLARATION9 vertexDeclaration = NULL;
+    LPDIRECT3DINDEXBUFFER9 indexBuffer = NULL;
+
+    D3DXMATRIX world, view, proj;
 };
 

@@ -7,6 +7,7 @@ int GameGlobal::mWidth = 960;
 int GameGlobal::mHeight = 640;
 LPDIRECT3DDEVICE9 GameGlobal::mDevice = nullptr;
 bool GameGlobal::isGameRunning = true;
+IDirect3DSurface9* GameGlobal::backSurface = nullptr;
 
 GameGlobal::GameGlobal()
 {

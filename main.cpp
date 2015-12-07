@@ -18,8 +18,8 @@ using namespace std;
 
 #define WIN_NAME L"Demo Beizer Curve"
 #define WIN_TITLE L"Demo Beizer Curve"
-#define SCREEN_WIDTH 1000
-#define SCREEN_HEIGHT 768
+#define SCREEN_WIDTH 600
+#define SCREEN_HEIGHT 600
 #define FPS 60
 #define KEYBOARD_BUFFERD_SIZE 1024
 
