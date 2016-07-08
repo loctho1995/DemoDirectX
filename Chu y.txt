@@ -1,0 +1,1 @@
+Turns out that in the default debug configuration, C/C++, Code Generation, Runtime Library is set to 'Multi-threaded Debug DLL (/MDd)'. In release this is set to 'Multi-threaded DLL (/MD)'. Switching this setting to match the release configuration results in a build which runs through visual studio, but displays a black screen outside of it.

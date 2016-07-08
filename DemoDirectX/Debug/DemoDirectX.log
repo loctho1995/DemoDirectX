@@ -1,0 +1,75 @@
+﻿Build started 4/28/2016 3:12:20 PM.
+     1>Project "G:\Github\DemoDirectX\DemoDirectX\DemoDirectX.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gz /TP /analyze- /errorReport:prompt GameScene.cpp
+         GameScene.cpp
+         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(24): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(37): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(63): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(138): warning C4018: '<' : signed/unsigned mismatch
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(149): warning C4018: '<' : signed/unsigned mismatch
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(159): warning C4018: '<' : signed/unsigned mismatch
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(161): warning C4018: '<' : signed/unsigned mismatch
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(182): warning C4244: 'argument' : conversion from 'size_t' to 'FLOAT', possible loss of data
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(209): warning C4018: '<' : signed/unsigned mismatch
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(213): warning C4018: '<' : signed/unsigned mismatch
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(351): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(533): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(539): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(545): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>g:\github\demodirectx\demodirectx\gamescene.cpp(551): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Github\DemoDirectX\Debug\DemoDirectX.exe" /INCREMENTAL /NOLOGO d3dx9.lib d3d9.lib dxguid.lib dinput8.lib zlib.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Github\DemoDirectX\Debug\DemoDirectX.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Github\DemoDirectX\Debug\DemoDirectX.lib" /MACHINE:X86 Debug\Animation.obj
+         Debug\Brick.obj
+         Debug\BrickGold.obj
+         Debug\Camera.obj
+         Debug\Enemy.obj
+         Debug\EnemyMushRoom.obj
+         Debug\Game.obj
+         Debug\GameCollision.obj
+         Debug\GameConverter.obj
+         Debug\GameDebugDraw.obj
+         Debug\GameGlobal.obj
+         Debug\GameInput.obj
+         Debug\GameLog.obj
+         Debug\GameMap.obj
+         Debug\GameScene.obj
+         Debug\GameTime.obj
+         Debug\main.obj
+         Debug\base64.obj
+         Debug\miniz.obj
+         Debug\tinyxml2.obj
+         Debug\TmxEllipse.obj
+         Debug\TmxImage.obj
+         Debug\TmxImageLayer.obj
+         Debug\TmxLayer.obj
+         Debug\TmxMap.obj
+         Debug\TmxObject.obj
+         Debug\TmxObjectGroup.obj
+         Debug\TmxPolygon.obj
+         Debug\TmxPolyline.obj
+         Debug\TmxPropertySet.obj
+         Debug\TmxTerrain.obj
+         Debug\TmxTerrainArray.obj
+         Debug\TmxTile.obj
+         Debug\TmxTileLayer.obj
+         Debug\TmxTileOffset.obj
+         Debug\TmxTileset.obj
+         Debug\TmxUtil.obj
+         Debug\Mario.obj
+         Debug\PhysicWorld.obj
+         Debug\QuadTree.obj
+         Debug\Scene.obj
+         Debug\SceneGamePlay.obj
+         Debug\SceneManager.obj
+         Debug\Shader.obj
+         Debug\Sprite.obj
+         Debug\TestScene.obj
+         Debug\TransitionScanDown.obj
+         DemoDirectX.vcxproj -> G:\Github\DemoDirectX\Debug\DemoDirectX.exe
+     1>Done Building Project "G:\Github\DemoDirectX\DemoDirectX\DemoDirectX.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.32
